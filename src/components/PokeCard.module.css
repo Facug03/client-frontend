@@ -7,6 +7,11 @@
     display: flex;
     border: 2px solid #333;
     box-shadow: -2px 4px 0 #888, -4px 6px 0 #333;
+    transition: 0.4s ease;
+}
+
+.cardcontainer:hover {
+    transform: scaleX(1.10) scaleY(1.10);
 }
 
 .pokecard {
