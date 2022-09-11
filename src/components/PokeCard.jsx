@@ -2,7 +2,6 @@ import styles from './PokeCard.module.css'
 
 export default function PokeCard ({ id, name, type, img }) {
   let idPoke = ''
-
   if (id.length === 1) {
     idPoke = `N.º 00${id}`
   } else if (id.length === 2) {
@@ -14,7 +13,14 @@ export default function PokeCard ({ id, name, type, img }) {
   return (
     <div className={styles.cardcontainer}>
       <div className={styles.pokecard}>
+        <div className={styles.detailright} />
+        <div className={styles.detailleft} />
         <img className={styles.imagepoke} src={img} alt='pokemon' />
+      </div>
+      <div className={styles.middledetail}>
+        <hr />
+        <hr />
+        <hr />
       </div>
       <div className={styles.data}>
         <span className={styles.idpoke}>{idPoke}</span>
