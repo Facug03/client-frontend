@@ -1,5 +1,6 @@
 import styles from './Nav.module.css'
 import img from '../img/poke-ball.png'
+import { Link } from 'react-router-dom'
 
 export default function Nav () {
   return (
@@ -11,7 +12,7 @@ export default function Nav () {
       </div>
 
       <div>
-        <input placeholder='Search a Pokemon' className={styles.search} type='text' />
+        <input placeholder='Search Pokemon...' className={styles.search} type='text' />
         <input type='button' className={styles.searchicon} />
       </div>
 
@@ -27,7 +28,9 @@ export default function Nav () {
             <div className={styles.green} />
           </div>
           <div>
-            <button className={styles.createpoke}>Create Pokemon</button>
+            <Link to='/create'>
+              <button className={styles.createpoke}>Create Pokemon</button>
+            </Link>
           </div>
         </div>
 
