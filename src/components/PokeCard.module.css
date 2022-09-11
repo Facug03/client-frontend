@@ -1,0 +1,43 @@
+.cardcontainer {
+    width: 300px;
+    height: 150px;
+    background-color: #fff;
+    padding: 20px;
+    align-content: center;
+    display: flex;
+    border: 2px solid #333;
+    box-shadow: -2px 4px 0 #888, -4px 6px 0 #333;
+}
+
+.pokecard {
+    display: flex;
+    align-items: center;
+}
+
+.imagepoke {
+    width: 95px;
+    height: 95px;
+    border: 2px solid #333;
+    object-fit: contain;
+    padding: 5px;
+    background-color: rgb(214, 202, 202);
+}
+
+.data {
+    margin-left: 30px;
+    font-family: RobotoMono;
+}
+
+.idpoke {
+    font-size: 15px;
+}
+
+.namepoke {
+    text-transform: capitalize;
+}
+
+.type {
+   background-color: #84d45e;
+   padding: 3px;
+   border: 1px solid #333;
+}
