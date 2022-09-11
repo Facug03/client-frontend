@@ -1,0 +1,129 @@
+.nav {
+    display: flex;
+    align-items: center;
+    background-color: #e32931;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.image {
+    width: 50px;
+    height: 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    /* margin-right: 200px; */
+}
+
+.search {
+    /* margin-left: 150px; */
+    margin-right: 7px;
+    height: 35px;
+    border: 2px solid #333;
+    border-bottom-left-radius: 10px;
+    box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
+}
+
+.searchicon {
+    background-image:url('../img/searchicon.png');
+    background-repeat:no-repeat;
+    height:35px;
+    width:35px;
+    background-size: 30px 30px;
+    background-position:center;
+    background-color: #444;
+    border: 2px solid #333;
+    border-radius: 2px 2px 0px 10px;
+    box-shadow: -2px 4px 0 #888, -4px 6px 0 #333;
+}
+
+.searchicon:active {
+    transform: translateY(3px) translateX(-1px);
+    /* box-shadow: 2px -3px 0 #888, 4px -5px 0 #333; */
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 200px;
+    justify-content: space-around;
+}
+
+.camera {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #2ee2fb;
+    border-radius: 50%;
+    border: 2px solid #333;
+    box-shadow: 0 0 0 3px #fcf9fc, 0 0 0 5px #555;
+}
+
+.ligth {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fcf9fc;
+}
+
+.colors {
+    display: flex;
+    margin-top: 7px;
+}
+
+.buttoncolor {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    align-items: center;
+    gap: 40px;
+    margin-right: 5px;
+}
+
+.createpoke {
+    font-size: 15px;
+    border: 2px solid #333;
+    border-radius: 2px 2px 0px 10px;
+    box-shadow: -1px 3px 0 #888, -3px 5px 0 #333;
+}
+
+.createpoke:active {
+    transform: translateY(3px) translateX(-1px);
+    /* box-shadow: 2px -3px 0 #888, 4px -5px 0 #333; */
+}
+
+.red {
+    margin: 0 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #b00f20;
+    border: 2px solid #333;
+}
+
+.yellow {
+    margin: 0 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f8bf2a;
+    border: 2px solid #333;
+}
+
+.green {
+    margin: 0 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color:  #84d45e;
+    border: 2px solid #333;
+    margin-right: 10px;
+}

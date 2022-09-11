@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+}
+
+.filtro {
+    width: 39%;
+    background-color: red;
+    height: 100px;
+}
+
+.card {
+    width: 60%;
+    height: 100px;
+}
