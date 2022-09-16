@@ -4,11 +4,23 @@
   src: local('RobotoMono'), url(../fonts/RobotoMono-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'RobotoMonoSemi';
+  src: local('RobotoMonoSemi'), url(../fonts/RobotoMono-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'FireRed';
+  src: local('FireRed'), url(../fonts/VPPixel-Simplified.otf) format('truetype');
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   padding: 0 5px;
   background-color: #e32931;
+  max-width: 1290px;
+  margin: auto;
 }
 
