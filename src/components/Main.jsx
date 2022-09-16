@@ -1,32 +1,25 @@
-import { useEffect, useState } from 'react'
-import styles from './Main.module.css'
+/* eslint-disable react/jsx-closing-tag-location */
+import { useState } from 'react'
+import { usePokemon } from '../hooks/usePokemon'
 import PokeCard from './PokeCard'
+import Loading from './Loading'
+import styles from './Main.module.css'
 
 export default function Main () {
-  const [pokemons, setPokemons] = useState()
+  const { isLoading, pokemons } = usePokemon()
+  const [currentPage, setCurrentPage] = useState(0)
 
-  useEffect(() => {
-    Promise.all([
-      fetch('https://pokeapi.co/api/v2/pokemon/1/').then(res => res.json()).then(res => {
-        return { name: res.name, type: res.types[0].type.name, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif', id: res.id.toString() }
-      }),
-      fetch('https://pokeapi.co/api/v2/pokemon/2/').then(res => res.json()).then(res => {
-        return { name: res.name, type: res.types[0].type.name, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif', id: res.id.toString() }
-      }),
-      fetch('https://pokeapi.co/api/v2/pokemon/3/').then(res => res.json()).then(res => {
-        return { name: res.name, type: ` ${res.types[0].type.name}/${res.types[1].type.name}`, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif', id: res.id.toString() }
-      }),
-      fetch('https://pokeapi.co/api/v2/pokemon/4/').then(res => res.json()).then(res => {
-        return { name: res.name, type: res.types[0].type.name, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif', id: res.id.toString() }
-      }),
-      fetch('https://pokeapi.co/api/v2/pokemon/5/').then(res => res.json()).then(res => {
-        return { name: res.name, type: res.types[0].type.name, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif', id: res.id.toString() }
-      }),
-      fetch('https://pokeapi.co/api/v2/pokemon/6/').then(res => res.json()).then(res => {
-        return { name: res.name, type: res.types[0].type.name, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif', id: res.id.toString() }
-      })
-    ]).then(res => setPokemons(res))
-  }, [])
+  const filteredPokemons = () => {
+    return pokemons.slice(currentPage, currentPage + 12)
+  }
+
+  const nextPage = () => {
+    if (currentPage + 12 < pokemons.length) setCurrentPage(currentPage + 12)
+  }
+
+  const prevPage = () => {
+    if (currentPage > 0) setCurrentPage(currentPage - 12)
+  }
 
   return (
     <div className={styles.main}>
@@ -38,16 +31,20 @@ export default function Main () {
       </section>
       <div className={styles.mid} />
       <section className={styles.card}>
-        {pokemons
-          ? pokemons.map(poke => <PokeCard
-              key={poke.id}
-              id={poke.id}
-              name={poke.name}
-              type={poke.type}
-              img={poke.img}
-                                 />)
-          : <h2 style={{ fontFamily: 'RobotoMono' }}>Pokemon not found</h2>}
+        {filteredPokemons().map(poke => <PokeCard
+          key={poke.id}
+          id={poke.id}
+          name={poke.name}
+          types={poke.types}
+                                        />)}
+        {isLoading && <Loading />}
+        {!isLoading &&
+          <div className={styles.button}>
+            <button className={styles.buttonprev} onClick={prevPage}>{'<'}</button>
+            <button className={styles.buttonnext} onClick={nextPage}>{'>'}</button>
+          </div>}
       </section>
+
     </div>
   )
 }

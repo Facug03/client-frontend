@@ -23,8 +23,8 @@
 
 .card {
     padding: 20px;
+    min-height: 745px;
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -38,3 +38,26 @@
     border-right: 2px solid #333;
 }
 
+.button {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    font-family: 'RobotoMonoSemi';
+}
+
+.buttonprev {
+    cursor: pointer;
+    width: 75px;
+    border: 2px solid #333;
+    box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
+    border-bottom-left-radius: 10px;
+}
+
+.buttonnext {
+    cursor: pointer;
+    width: 75px;
+    border: 2px solid #333;
+    box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
+    border-bottom-right-radius: 10px;
+}
