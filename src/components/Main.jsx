@@ -25,9 +25,44 @@ export default function Main () {
     <div className={styles.main}>
       <section className={styles.filtro}>
         <h2 className={styles.filtertitle}>Filter by</h2>
-        <h4>Type</h4>
-        <h4>Order</h4>
-        <h4>Origin</h4>
+        <div className={styles.typefilter}>
+          <h4 className={styles.typetitle}>Type</h4>
+          <span className={styles.types}>normal</span>
+          <span className={styles.types}>fighting</span>
+          <span className={styles.types}>flying</span>
+          <span className={styles.types}>poison</span>
+          <span className={styles.types}>ground</span>
+          <span className={styles.types}>rock</span>
+          <span className={styles.types}>bug</span>
+          <span className={styles.types}>ghost</span>
+          <span className={styles.types}>steel</span>
+          <span className={styles.types}>fire</span>
+          <span className={styles.types}>water</span>
+          <span className={styles.types}>grass</span>
+          <span className={styles.types}>electric</span>
+          <span className={styles.types}>psychic</span>
+          <span className={styles.types}>ice</span>
+          <span className={styles.types}>dragon</span>
+          <span className={styles.types}>dark</span>
+          <span className={styles.types}>fairy</span>
+          <span className={styles.types}>unknown</span>
+          <span className={styles.types}>shadow</span>
+        </div>
+        <div className={styles.typefilter}>
+          <h4 className={styles.typetitle}>Order</h4>
+          <span className={styles.ordertype}>A-Z</span>
+          <span className={styles.ordertype}>Z-A</span>
+          <span className={styles.ordertype}>Attack++</span>
+          <span className={styles.ordertype}>Attack--</span>
+          <span className={styles.ordertype}>Hp++</span>
+          <span className={styles.ordertype}>Hp--</span>
+        </div>
+        <div className={styles.typefilter}>
+          <h4 className={styles.typetitle}>Origin</h4>
+          <span className={styles.ordertype}>All</span>
+          <span className={styles.ordertype}>Created</span>
+          <span className={styles.ordertype}>Original</span>
+        </div>
       </section>
       <div className={styles.mid} />
       <section className={styles.card}>
@@ -40,11 +75,10 @@ export default function Main () {
         {isLoading && <Loading />}
         {!isLoading &&
           <div className={styles.button}>
-            <button className={styles.buttonprev} onClick={prevPage}>{'<'}</button>
-            <button className={styles.buttonnext} onClick={nextPage}>{'>'}</button>
+            {currentPage !== 0 ? <button className={styles.buttonprev} onClick={prevPage}>{'<'}</button> : <div />}
+            {currentPage + 12 < pokemons.length ? <button className={styles.buttonnext} onClick={nextPage}>{'>'}</button> : <div />}
           </div>}
       </section>
-
     </div>
   )
 }

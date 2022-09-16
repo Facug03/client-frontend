@@ -5,8 +5,8 @@
 
 .filtro {
     width: 300px;
-    height: 100vh;
-    background-color: #e9e9ed;
+    min-height: 775px;
+    background-color: #ffffff;
     font-family: 'RobotoMono';
     padding: 10px;
 }
@@ -19,6 +19,29 @@
     background-color: #24ae00;
     box-shadow: 0 0 7px 1px #24ae00;
     border-radius: 6px;
+}
+
+.typetitle {
+    margin: 10px 0;
+    width: 100%;
+    font-size: 20px;
+}
+
+.typefilter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.types {
+    margin: 2.5px 0;
+    font-size: 15px;
+    width: 100px;
+}
+
+.ordertype {
+    margin: 2.5px 0;
+    font-size: 15px;
+    width: 180px;
 }
 
 .card {
