@@ -1,0 +1,107 @@
+.container {
+    min-height: 585px;
+    width: 500px;
+    border: 2px solid #333;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #fcf9fc;
+    box-shadow: -1px 3px 0 #888, -3px 5px 0 #333;
+    font-family: 'RobotoMono';
+    padding: 10px;
+}
+
+.formtitle {
+    text-align: center;
+    font-family: 'RobotoMonoSemi';
+}
+
+.formpoke {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.inputstyle {
+    position: relative;
+}
+
+.inputform {
+    padding: .5em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+    width: 300px;
+}
+
+.labelform {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+}
+
+.inputform:focus + .labelform, .inputform:not(:placeholder-shown) + .labelform{
+    transform: translateY(-12px) scale(.7);
+    transform-origin: top left;
+}
+
+.statsform {
+    width: 200px;
+    padding: .5em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+}
+
+.statsform:focus + .labelform, .statsform:not(:placeholder-shown) + .labelform{
+    transform: translateY(-12px) scale(.7);
+    transform-origin: top left;
+}
+
+.types {
+    width: 200px;
+    border: 2px solid #333;
+    border-radius: 3px;
+    box-shadow: -1px 3px 0 #888, -3px 5px 0 #333;
+    cursor: pointer;
+}
+
+.typescontainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    width: 400px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.titletype {
+  margin: 3px 0;
+}
+
+.buttoncreate {
+    cursor: pointer;
+    margin-top: -20px;
+    width: 150px;
+    padding: 5px;
+    border: 2px solid #333;
+    box-shadow: -1px 3px 0 #888, -3px 5px 0 #333;
+}
+
+.message {
+    color: #da392f;
+    position: absolute;
+    top: 28px;
+    font-size: 11px;
+}

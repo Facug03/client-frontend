@@ -1,20 +1,20 @@
+import React from 'react'
 import Main from './components/Main'
 import Nav from './components/Nav'
-import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import Pokemon from './components/Pokemon'
+import Create from './components/Create'
+import { Route } from 'react-router-dom'
 
 function App () {
   return (
     <>
+      <Nav />
       <Route exact path='/'>
-        <Nav />
         <Main />
+        <Pokemon />
       </Route>
       <Route path='/create'>
-        <Link to='/'>
-          <p>atras</p>
-        </Link>
-        <p>hola</p>
+        <Create />
       </Route>
     </>
   )
