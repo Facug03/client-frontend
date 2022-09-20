@@ -2,20 +2,21 @@
 import styles from './Pokemon.module.css'
 import ima from '../img/ps.png'
 
-export default function Pokemon ({ color, id, idPoke, name, img, modal, setModal }) {
-  // const [stats, setStats] = useState()
-  // useEffect(() => {
-  //   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-  //     .then(res => res.json())
-  //     .then(res => setStats({
-  //       height: res.height,
-  //       hp: res.stats[0].base_stat,
-  //       attack: res.stats[1].base_stat,
-  //       defense: res.stats[2].base_stat,
-  //       speed: res.stats[5].base_stat,
-  //       weight: res.weight
-  //     }))
-  // })
+export default function Pokemon ({
+  color,
+  id,
+  idPoke,
+  name,
+  img,
+  modal,
+  setModal,
+  hp,
+  attack,
+  defense,
+  specialAt,
+  specialDef,
+  speed
+}) {
   return (
     <>
       {modal &&
@@ -33,7 +34,7 @@ export default function Pokemon ({ color, id, idPoke, name, img, modal, setModal
                 <div className={styles.pointsps}>
                   <h3 className={styles.pokemonstats}>PS</h3>
                 </div>
-                <span className={styles.psnumber}>21/21</span>
+                <span className={styles.psnumber}>{hp}/{hp}</span>
               </div>
               <div className={styles.ps}>
                 <div className={styles.bar}>
@@ -44,31 +45,31 @@ export default function Pokemon ({ color, id, idPoke, name, img, modal, setModal
                 <div className={styles.points}>
                   <h3 className={styles.pokemonstats}>ATAQUE</h3>
                 </div>
-                <span className={styles.number}>21/21</span>
+                <span className={styles.number}>{attack}</span>
               </div>
               <div className={styles.habilitys}>
                 <div className={styles.points}>
                   <h3 className={styles.pokemonstats}>DEFENSA</h3>
                 </div>
-                <span className={styles.number}>21/21</span>
+                <span className={styles.number}>{defense}</span>
               </div>
               <div className={styles.habilitys}>
                 <div className={styles.points}>
                   <h3 className={styles.pokemonstats}>AT.ESP.</h3>
                 </div>
-                <span className={styles.number}>21/21</span>
+                <span className={styles.number}>{specialAt}</span>
               </div>
               <div className={styles.habilitys}>
                 <div className={styles.points}>
                   <h3 className={styles.pokemonstats}>DEF.ESP</h3>
                 </div>
-                <span className={styles.number}>21/21</span>
+                <span className={styles.number}>{specialDef}</span>
               </div>
               <div className={styles.habilitys}>
                 <div className={styles.points}>
                   <h3 className={styles.pokemonstats}>VELOCID.</h3>
                 </div>
-                <span className={styles.number}>21/21</span>
+                <span className={styles.number}>{speed}</span>
               </div>
             </div>
             <button onClick={() => setModal(false)} className={styles.close}>X</button>
