@@ -5,6 +5,7 @@
     border-radius: 50%;
     border-left-color: #fff;
     animation: spin 1s ease infinite;
+    margin: auto;
   }
   
   @keyframes spin {
