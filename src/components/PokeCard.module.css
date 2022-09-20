@@ -9,14 +9,41 @@
     box-shadow: -2px 4px 0 #888, -4px 6px 0 #333;
     transition: 0.4s ease;
 }
-/* 
+
 .cardcontainer:hover {
     transform: scaleX(1.10) scaleY(1.10);
 }
 
-.nohover {
-    pointer-events: none;
-} */
+.notfound {
+    max-width: 1018px;
+    min-height: 170px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 42px 40px 32px;
+    border-radius: 4px;
+}
+
+.notfoundtitle {
+    font-family: 'RobotoMonoSemi';
+    font-size: 24px;
+}
+
+.imfound {
+    height: 70px;
+    width: 70px;
+    margin-right: 35px;
+}
+
+.listul {
+    padding-left: 20px ;
+    margin-top: 20px;
+}
+
+.list {
+    font-family: 'RobotoMono';
+    font-size: 16px;
+}
 
 .pokecard {
     display: flex;
@@ -92,5 +119,35 @@
 
 hr {
     border: 1px solid #333;
+}
+
+@media (max-width: 906px) {
+    .cardcontainer {
+        width: 275px;
+        height: 150px;
+        padding: 5px;
+    }
+    .data {
+        margin-top: 14px;
+    }
+}
+
+
+@media (max-width: 855px) {
+    .cardcontainer {
+        width: 265px;
+        height: 150px;
+        padding: 3px;
+    }
+    .namepoke {
+        font-size: 16px;
+    }
+    .idpoke {
+        font-size: 13px;
+    }
+    .imagepoke {
+        width: 85px;
+        height: 85px;
+    }
 }
 
