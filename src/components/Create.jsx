@@ -26,10 +26,10 @@ export default function Create () {
   const errorSpeed = validateStats(form.speed)
   const errorDefEsp = validateStats(form.defesp)
   const errorAtEsp = validateStats(form.atesp)
+  const errorUrl = validateUrl(form.url)
 
-  // const errorUrl = validateStats(form.url)
-
-  const handleSubmit = () => {
+  const handleSubmit = (ev) => {
+    console.log(ev)
   }
 
   return (
@@ -38,7 +38,7 @@ export default function Create () {
       <form
         className={styles.formpoke} onSubmit={ev => {
           ev.preventDefault()
-          handleSubmit()
+          handleSubmit(ev)
         }}
       >
         <div className={styles.inputstyle}>
@@ -79,7 +79,7 @@ export default function Create () {
         <div className={styles.inputstyle}>
           <input onChange={handleInput} value={form.url} className={styles.inputform} autoComplete='off' type='text' name='url' placeholder=' ' />
           <label className={styles.labelform}>Image(url)</label>
-          <p className={styles.message}>a</p>
+          <p className={styles.message}>{errorUrl}</p>
         </div>
         <div />
         <div className={styles.selecttypes}>
@@ -143,11 +143,19 @@ export default function Create () {
 }
 
 const validateName = name => {
-  if (name.length > 10) return '10 caracteres como maximo'
-  if (!/^[a-z ,.'-]+$/i.test(name)) return 'Ingresa un nombre valido'
+  if (name.length) {
+    if (name.length > 10) return '10 caracteres como maximo'
+    if (!/^[a-z ,.'-]+$/i.test(name)) return 'Ingresa un nombre valido'
+  }
 }
 
 const validateStats = stat => {
   if (stat.length > 3) return 'No puede superar los 3 digitos'
   if (!/^[0-9]*$/.test(stat)) return 'Solo numeros'
+}
+
+const validateUrl = url => {
+  if (url.length) {
+    if (!/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w]*))?)/.test(url)) return 'Url invalida'
+  }
 }
