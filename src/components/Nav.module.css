@@ -46,7 +46,8 @@
     -webkit-box-shadow: -4px 5px 0px -1px #888, -5px 6px 0 #333;
     -moz-box-shadow: -px 5px 0px -1px #888, -5px 6px 0 #333;
     border-left: none;
-    cursor: pointer
+    cursor: pointer;
+    font: 0/0 a;
 }
 
 .create {
@@ -54,7 +55,7 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 200px;
+    width: 200px;
     justify-content: space-around;
 }
 
@@ -102,7 +103,6 @@
 
 .createpoke:active {
     transform: translateY(3px) translateX(-1px);
-    /* box-shadow: 2px -3px 0 #888, 4px -5px 0 #333; */
 }
 
 .red {
@@ -137,3 +137,98 @@
     display: flex;
     margin: auto;
 }
+
+@media (max-width: 840px) {
+    .search {
+        height: 35px;
+        width: 200px;
+    }
+    
+    .searchicon {
+        margin-left: 200px;
+        height:35px;
+        width:35px;
+        background-size: 30px 30px;
+        background-position:center;
+    }
+    .camera {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 690px) {
+    .search {
+        height: 35px;
+        width: 150px;
+    }
+    
+    .searchicon {
+        margin-left: 150px;
+        height:35px;
+        width:35px;
+        background-size: 30px 30px;
+        background-position:center;
+    }
+    .camera {
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .image {
+        display: none;
+    }
+    .colors {
+        margin: 0;
+        width: 80px;
+        justify-content: center;
+    }
+    .red {
+        width: 17px;
+        height: 17px;
+        margin: 0;
+    }
+    .yellow {
+        width: 17px;
+        height: 17px;
+        margin: 0;
+    }
+    .green {
+        width: 17px;
+        height: 17px;
+        margin: 0;
+    }
+    .createpoke {
+        width: 80px;
+    }
+    .buttoncolor {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80px;
+        height: 100px;
+        gap: 0;
+        align-content: space-around;
+    }
+}
+
+@media (max-width: 550px) {
+    .searchbar {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding-top: 10px;
+        align-items: center;
+    }
+    .create {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .buttoncolor {
+        margin: 5px 0;
+        height: 85px;
+    }
+}
+  
