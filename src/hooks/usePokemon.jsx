@@ -1,20 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { fetchPokemons } from '../helpers/fecthPokemons'
+import { initialize } from '../actions'
+import { useDispatch } from 'react-redux'
 
 export const usePokemon = () => {
-  const [isLoading, setisLoading] = useState(true)
-  const [pokemons, setPokemons] = useState([])
-
+  const dispatch = useDispatch()
   useEffect(() => {
-    fetchPokemons()
-      .then(pokemons => {
-        setisLoading(false)
-        setPokemons(pokemons)
-      })
-  }, [])
-
-  return {
-    isLoading,
-    pokemons
-  }
+    fetchPokemons().then(poke => dispatch(initialize(poke)))
+  }, [dispatch])
 }
