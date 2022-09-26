@@ -12,6 +12,13 @@ export const searchPokemon = payload => {
   }
 }
 
+export const resetPage = payload => {
+  return {
+    type: 'RESET',
+    payload
+  }
+}
+
 export const primaryType = (payload, make) => {
   return {
     type: 'PRIMARY_TYPE',
