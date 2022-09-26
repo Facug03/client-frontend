@@ -3,13 +3,12 @@ import axios from 'axios'
 export const fetchPokemons = async () => {
   const resp = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
   const smallPokemonList = resp.data.results
-  const response = await axios.get('http://localhost:3001/pokemons').catch(err => err)
-  const created = response.data
-  console.log(created)
-  return transformSmallPokemonIntoPokemon(smallPokemonList, created)
+  const response = await axios.get('http://192.168.0.172:3001/pokemons').catch(err => err)
+  const create = response.data
+  return transformSmallPokemonIntoPokemon(smallPokemonList, create)
 }
 
-const transformSmallPokemonIntoPokemon = async (smallPokemonList, created) => {
+const transformSmallPokemonIntoPokemon = async (smallPokemonList, create) => {
   const pokemonArr = await Promise.all(smallPokemonList.map(poke => axios.get(`https://pokeapi.co/api/v2/pokemon/${poke.url.split('/')[6]}`)
     .then(({ data }) => {
       const id = data.id
@@ -29,12 +28,13 @@ const transformSmallPokemonIntoPokemon = async (smallPokemonList, created) => {
         defense,
         specialAt,
         specialDef,
-        speed
+        speed,
+        created: false
       }
     })))
 
-  if (created) {
-    const pokemonsCreated = created.map(poke => {
+  if (create) {
+    const pokemonsCreated = create.map(poke => {
       const id = poke.id
       const types = poke.types.map(types => types.primaryType)
       const hp = poke.hp
@@ -44,6 +44,7 @@ const transformSmallPokemonIntoPokemon = async (smallPokemonList, created) => {
       const specialDef = poke.defesp
       const speed = poke.speed
       const url = poke.url
+      const created = poke.created
       return {
         id,
         name: poke.name,
@@ -54,7 +55,8 @@ const transformSmallPokemonIntoPokemon = async (smallPokemonList, created) => {
         specialAt,
         specialDef,
         speed,
-        url
+        url,
+        created
       }
     })
 
