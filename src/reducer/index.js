@@ -26,7 +26,7 @@ export const rootReducer = (state = initialState, action) => {
   }
   if (action.type === 'PRIMARY_TYPE') {
     if (state.pokemonsFiltered.length > 0 && action.make) {
-      if (state.pokemons.find(poke => poke.types[0] === action.payload) || state.pokemons.find(poke => poke.types[1] === action.payload)) {
+      if (state.pokemonsFiltered.find(poke => poke.types[0] === action.payload) || state.pokemonsFiltered.find(poke => poke.types[1] === action.payload)) {
         return {
           ...state,
           pokemonsFiltered: [...state.pokemonsFiltered.filter(poke => poke.types[0] === action.payload),
@@ -95,6 +95,44 @@ export const rootReducer = (state = initialState, action) => {
     return {
       ...state,
       pokemonsFiltered: [...state.pokemons]
+    }
+  }
+  if (action.type === 'ORDER_BY_ORIGINAL') {
+    if (action.payload) {
+      if (state.pokemonsFiltered.find(poke => poke.created === false)) {
+        return {
+          ...state,
+          pokemonsFiltered: [...state.pokemonsFiltered.filter(poke => poke.created === false)]
+        }
+      } else {
+        return {
+          ...state,
+          pokemonsFiltered: [{ id: 'noPokemonFound', filter: 'There are no Pokemons created with this type' }]
+        }
+      }
+    }
+    return {
+      ...state,
+      pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === false)]
+    }
+  }
+  if (action.type === 'ORDER_BY_CREATED') {
+    if (action.payload) {
+      if (state.pokemonsFiltered.find(poke => poke.created === true)) {
+        return {
+          ...state,
+          pokemonsFiltered: [...state.pokemonsFiltered.filter(poke => poke.created === true)]
+        }
+      } else {
+        return {
+          ...state,
+          pokemonsFiltered: [{ id: 'noPokemonFound', filter: 'There are no Pokemons created with this type' }]
+        }
+      }
+    }
+    return {
+      ...state,
+      pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === true)]
     }
   }
   if (action.type === 'SEARCH') {
