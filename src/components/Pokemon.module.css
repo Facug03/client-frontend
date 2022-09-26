@@ -27,16 +27,17 @@
 }
 
 .close {
-    font-family: 'RobotoMono';
+    font-family: 'FireRed';
     border: 2px solid #333;
+    border-top: none;
+    border-right: none;
     font-size: 15px;
     position: absolute;
     width: 30px;
     height: 30px;
-    background-color: #e32931;
-    border-radius: 50%;
-    top: 10px;
-    right: 10px;
+    background-color: #fef4eb;
+    top: 0;
+    right: 0;
     padding: 3px;
     outline: none;
     cursor: pointer;
@@ -83,7 +84,32 @@
     width: 100px;
     height: 100px;
     transform: scaleX(-1);
+    animation: move .75s ease;
 }
+
+@keyframes move {
+    0% { transform: translateY(-4px) scaleX(-1) }
+    10% { transform: translateY(-8px) scaleX(-1)}
+    15% { transform: translateY(-12px) scaleX(-1)}
+    20% { transform: translateY(-16px) scaleX(-1)}
+    25% { transform: translateY(-20px) scaleX(-1)}
+    30% { transform: translateY(-16px) scaleX(-1)}
+    35% { transform: translateY(-12px) scaleX(-1)}
+    40% { transform: translateY(-8px) scaleX(-1)}
+    45% { transform: translateY(-4px) scaleX(-1)}
+    50% { transform: translateY(0) scaleX(-1)}
+    55% { transform: translateY(-4px) scaleX(-1)}
+    65% { transform: translateY(-8px) scaleX(-1) }
+    70% { transform: translateY(-12px) scaleX(-1)}
+    75% { transform: translateY(-16px) scaleX(-1)}
+    80% { transform: translateY(-20px) scaleX(-1)}
+    85% { transform: translateY(-16px) scaleX(-1)}
+    90% { transform: translateY(-12px) scaleX(-1)}
+    95% { transform: translateY(-8px) scaleX(-1)}
+    97% { transform: translateY(-4px) scaleX(-1)}
+    100% { transform: translateY(0) scaleX(-1)}
+  }
+  
 
 .idpokemon {
     position: absolute;
@@ -97,7 +123,6 @@
 .stats {
     width: 400px;
     height: 325px;
-    margin-top: 15px;
     background-image: url(../img/fondostats.jpg);
     background-size: 250px;
     padding: 0 5px;
@@ -200,6 +225,18 @@
     text-shadow: 1px 0.5px #999;
 }
 
+.noid {
+    text-transform: capitalize;
+    position: absolute;
+    margin: 0;
+    left: 60px;
+    top: 32px;
+    color:  #fff2ff;
+    font-size: 30px;
+    text-shadow: 1.5px 2px #635972;
+}
+
+
 @media (max-width: 540px) {
     .pokemoninfo {
         width: 400px;
@@ -214,6 +251,23 @@
     .stats {
         width: 300px;
     }
+    .psnumber {
+        width: 193px;
+    }
+    .ps {
+        height: 10px;
+    }
+    .bar {
+        top: -6px;
+        left: 10px;
+    }
+    .green {
+        width: 145px;
+        height: 15px;
+    }
+    .psima {
+        height: 15px;
+    }
    
 }
 
@@ -221,7 +275,8 @@
 @media (max-width: 435px) {
     .pokemoninfo {
         padding: 15px;
-        width: 370px;
+        width: 340px;
+        height: 550px;
         align-content: center;
     }
     .title {
@@ -238,15 +293,14 @@
     }
     .psnumber {
         width: 153px;
+        right: 37px;
     }
     .namepokemon {
         font-size: 25px;
-        left: 175px;
-        top: 23px;
+        left: 157px;
     }
     .idpokemon {
         font-size: 25px;
-        top: 23px;
     }
     .ps {
         height: 10px;
@@ -263,18 +317,66 @@
         left: 5px;
     }
     
+    .close {
+        height: 25px;
+        width: 25px;
+    }
+
+    .noid {
+        left: 43px;
+    }
 }
-/* .pokemoninfo {
-    position: relative;
-    width: 500px;
-    height: 600px;
-    background-color: #fef4eb;
-    border: 2px solid #333;
-    box-shadow: -1px 3px 0 #888, -3px 5px 0 #333;
-    padding: 30px;
-    border-radius: 4px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: 'FireRed';
-} */
+
+@media (max-width: 370px) {
+    .pokemoninfo {
+        padding: 10px;
+        width: 300px;
+        height: 500px;
+    }
+    .psnumber {
+        right: 27px;
+    }
+    .idpokemon {
+        top: 44px;
+        font-size: 22px;
+    }
+    .title {
+        height: 150px;
+        width: 250px;
+    }
+    .containerpoke {
+        height: 102px;
+        width: 234px;
+    }
+    .namepokemon {
+        top: 44px;
+        left: 145px;
+        font-size: 22px;
+    }
+    .stats {
+        width: 250px;
+    }
+    .psnumber {
+        font-size: 22px;
+    }
+    .number {
+        font-size: 22px;
+    }
+    .pokemonstats {
+        font-size: 22px;
+    }
+    .habilitys {
+        height: 45px;
+    }
+    .imagepokemon {
+        height: 90px;
+    }
+    .close {
+        height: 20px;
+        width: 20px;
+        line-height: 0.75;
+    }
+    .noid {
+        left: 34px;
+    }
+}
