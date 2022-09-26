@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { orderByAll } from '../actions'
 import { useOrder } from '../hooks/useOrder'
 import styles from './Filter.module.css'
 import img from '../img/filter.png'
@@ -10,11 +8,12 @@ export default function Filter () {
   const {
     type,
     order,
+    ori,
     handleClose,
     handleOrder,
-    handleType
+    handleType,
+    handleOrigin
   } = useOrder()
-  const dispatchc = useDispatch()
 
   const handleShow = () => {
     if (!show) setShow(true)
@@ -29,6 +28,13 @@ export default function Filter () {
       </div>
       <section className={`${styles.filtro} ${show && styles.active}`}>
         <h2 className={styles.filtertitle}>Filter by</h2>
+        {ori.value &&
+          <div className={`${styles.show} ${styles.showorder}`}>
+            <span className={styles.filtershow}>
+              {ori.text}
+              <svg className={styles.iconx} onClick={() => handleClose('origin')}><path transform='translate(5 5)' fillOpacity='0.45' d='M8.594.552l.855.842L5.87 5.022 9.45 8.6l-.849.848-3.572-3.572-3.521 3.572-.855-.842L4.18 5.028.552 1.4l.849-.848 3.621 3.62L8.594.553z' /></svg>
+            </span>
+          </div>}
         {order.value &&
           <div className={`${styles.show} ${styles.showorder}`}>
             <span className={styles.filtershow}>
@@ -47,9 +53,9 @@ export default function Filter () {
         <div className={styles.typefilter}>
           <h4 className={`${styles.typetitle} ${styles.origintitle}`}>Origin</h4>
           <div className={`${styles.originorder}`}>
-            <span className={styles.orderorigin} onClick={() => dispatchc(orderByAll())}>All</span>
-            <span className={styles.orderorigin}>Created</span>
-            <span className={styles.orderorigin}>Original</span>
+            <span className={styles.orderorigin} onClick={(e) => handleOrigin(e.target.textContent)}>All</span>
+            <span className={styles.orderorigin} onClick={(e) => handleOrigin(e.target.textContent)}>Created</span>
+            <span className={styles.orderorigin} onClick={(e) => handleOrigin(e.target.textContent)}>Original</span>
           </div>
         </div>
         {show && <hr className={styles.hr} />}

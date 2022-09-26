@@ -76,6 +76,7 @@ export default function Main () {
           specialDef={poke.specialDef}
           speed={poke.speed}
           url={poke.url}
+          created={poke.created}
                                         />)}
         {pokemons.length === 0 && <Loading />}
         <Pagination

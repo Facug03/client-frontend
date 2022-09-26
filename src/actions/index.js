@@ -27,15 +27,17 @@ export const primaryType = (payload, make) => {
   }
 }
 
-export const orderByCreated = () => {
+export const orderByCreated = payload => {
   return {
-    type: 'ORDER_BY_CREATED'
+    type: 'ORDER_BY_CREATED',
+    payload
   }
 }
 
-export const orderByOriginal = () => {
+export const orderByOriginal = payload => {
   return {
-    type: 'ORDER_BY_ORIGINAL'
+    type: 'ORDER_BY_ORIGINAL',
+    payload
   }
 }
 
@@ -48,6 +50,7 @@ export const orderByAll = () => {
 export const deleteFilter = (filter, payload) => {
   if (filter === 'type') return orderByStats(payload)
   if (filter === 'order') return primaryType(payload, false)
+  if (filter === 'origin') return origins(payload, false)
   return {
     type: 'DELETE_FILTER',
     filter
@@ -142,4 +145,10 @@ const orderByMinHp = (payload) => {
     type: 'ORDER_BY_MINHP',
     payload
   }
+}
+
+const origins = (origin, value) => {
+  if (origin === 'All') return orderByAll()
+  else if (origin === 'Created') return orderByCreated(value)
+  else return orderByOriginal(value)
 }
