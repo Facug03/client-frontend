@@ -31,6 +31,14 @@
     border-bottom-left-radius: 10px;
     box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
     position: absolute;
+    outline: none;
+}
+
+.clean {
+    cursor: pointer;
+    width: 20px;
+    position: absolute;
+    transform: translateX(-57px) translateY(7px);
 }
 
 .searchicon {
