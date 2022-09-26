@@ -75,6 +75,11 @@
     flex-wrap: wrap;
 }
 
+.orderby {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .originorder {
     display: flex;
     flex-direction: column;

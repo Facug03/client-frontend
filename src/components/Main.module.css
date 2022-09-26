@@ -5,7 +5,7 @@
 
 .card {
     padding: 20px;
-    min-height: 745px;
+    min-height: 770px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -20,34 +20,25 @@
     border-right: 2px solid #333;
 }
 
-.button {
-    margin: 15px 0;
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    font-family: 'RobotoMonoSemi';
-}
-
-.buttonprev {
-    cursor: pointer;
-    width: 75px;
-    border: 2px solid #333;
-    box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
-    border-bottom-left-radius: 10px;
-}
-
-.buttonnext {
-    cursor: pointer;
-    width: 75px;
-    border: 2px solid #333;
-    box-shadow: -3px 4px 0 #888, -5px 6px 0 #333;
-    border-bottom-right-radius: 10px;
-}
-
 @media (max-width: 857px) {
     .main {
         display: flex;
         flex-direction: column;
     }
 }
+
+@media (max-width: 633px) {
+    .card {
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 543px) {
+    .card {
+        gap: 10px;
+    }
+}
+
+
 
