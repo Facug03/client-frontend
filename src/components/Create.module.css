@@ -1,5 +1,5 @@
 .container {
-    min-height: 585px;
+    min-height: 600px;
     width: 500px;
     border: 2px solid #333;
     margin: 0 auto;
@@ -32,9 +32,10 @@
 .inputform {
     padding: .5em .3em;
     border: none;
-    outline: none;
     border-bottom: 2px solid #333;
     width: 300px;
+    outline: none;
+    background-color: #fcf9fc;
 }
 
 .labelform {
@@ -42,30 +43,46 @@
     top: 0;
     left: 5px;
     transform: translateY(10px);
-    transition: transform .5s, color .3s;
+    transition: transform .2s, color .1s;
     font-size: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     pointer-events: none;
 }
 
+.inputform:focus {
+    border: 1px solid #e32931;
+    border-radius: 4px;
+}
+
 .inputform:focus + .labelform, .inputform:not(:placeholder-shown) + .labelform{
-    transform: translateY(-12px) scale(.7);
+    transform: translateY(-6px) translateX(3px) scale(.7);
     transform-origin: top left;
+    background-color: #fcf9fc;
+    padding: 0 5px;
 }
 
 .statsform {
     width: 200px;
     padding: .5em .3em;
     border: none;
-    outline: none;
     border-bottom: 2px solid #333;
+    outline: none;
+    background-color: #fcf9fc;
 }
 
 .statsform:focus + .labelform, .statsform:not(:placeholder-shown) + .labelform{
-    transform: translateY(-12px) scale(.7);
+    transform: translateY(-6px) translateX(3px)  scale(.7);
     transform-origin: top left;
+    background-color: #fcf9fc;
+    padding: 0 5px;
 }
+
+.statsform:focus {
+    border: 1px solid #e32931;
+    border-radius: 4px;
+}
+
 
 .types {
     width: 200px;
@@ -92,7 +109,7 @@ select::-ms-expand {
 
 .buttoncreate {
     cursor: pointer;
-    margin-top: -20px;
+    margin-top: -10px;
     width: 150px;
     padding: 5px;
     border: 2px solid #333;
@@ -104,4 +121,73 @@ select::-ms-expand {
     position: absolute;
     top: 28px;
     font-size: 11px;
+}
+
+.select {
+    color: #da392f;
+    font-size: 11px;
+    margin: 0;
+    height: 12px;
+}
+
+.url {
+    position: relative;
+    left: 12px;
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: 400px;
+        padding: 10px 15px 10px 15px;
+    }
+    .statsform {
+        width: 300px;
+    }
+    .typescontainer {
+        margin: 15px 0 0 0;
+        width: 300px;
+        align-items: center;
+    }
+    .titletype {
+        margin: 3px 5px;
+        width: 122px;
+    }
+    .types {
+        width: 150px;
+    }
+    .formtitle {
+        margin-top: 10px;
+    }
+    .inputform {
+        width: 300px;
+    }
+    .buttoncreate {
+        margin-bottom: 10px;
+    }
+    .select {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: 300px;
+        padding: 10px;
+    }
+    .statsform {
+        width: 250px;
+    }
+    .typescontainer {
+        width: 250px;
+    }
+    .titletype {
+        font-size: 17px;
+        width: 110px;
+    }
+    .inputform {
+        width: 250px;
+    }
+    .select {
+        margin-left: 5px;
+    }
 }
