@@ -3,8 +3,6 @@ import styles from './Pokemon.module.css'
 import ima from '../img/ps.png'
 
 export default function Pokemon ({
-  color,
-  id,
   idPoke,
   name,
   img,
@@ -15,7 +13,9 @@ export default function Pokemon ({
   defense,
   specialAt,
   specialDef,
-  speed
+  speed,
+  url,
+  idStr
 }) {
   return (
     <>
@@ -23,10 +23,10 @@ export default function Pokemon ({
         <div className={styles.background}>
           <div className={styles.pokemoninfo}>
             <div className={styles.title}>
-              <h2 className={styles.namepokemon}>{name}</h2>
-              <h2 className={styles.idpokemon}>{idPoke}</h2>
+              <h2 className={`${styles.namepokemon} ${idStr && styles.noid}`}>{name}</h2>
+              <h2 className={styles.idpokemon}>{idStr || idPoke}</h2>
               <div className={styles.containerpoke}>
-                <img className={styles.imagepokemon} src={img} alt='img-pokemon' />
+                <img className={styles.imagepokemon} src={url || img} alt='img-pokemon' />
               </div>
             </div>
             <div className={styles.stats}>
@@ -72,7 +72,7 @@ export default function Pokemon ({
                 <span className={styles.number}>{speed}</span>
               </div>
             </div>
-            <button onClick={() => setModal(false)} className={styles.close}>X</button>
+            <button onClick={() => setModal(false)} className={styles.close}>x</button>
           </div>
         </div>}
     </>
