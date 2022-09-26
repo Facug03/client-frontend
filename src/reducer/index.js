@@ -111,9 +111,16 @@ export const rootReducer = (state = initialState, action) => {
         }
       }
     }
-    return {
-      ...state,
-      pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === false)]
+    if (state.pokemons.find(poke => poke.created === false)) {
+      return {
+        ...state,
+        pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === false)]
+      }
+    } else {
+      return {
+        ...state,
+        pokemonsFiltered: [{ id: 'noPokemonFound', filter: 'There are no Pokemons created' }]
+      }
     }
   }
   if (action.type === 'ORDER_BY_CREATED') {
@@ -130,9 +137,16 @@ export const rootReducer = (state = initialState, action) => {
         }
       }
     }
-    return {
-      ...state,
-      pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === true)]
+    if (state.pokemons.find(poke => poke.created === true)) {
+      return {
+        ...state,
+        pokemonsFiltered: [...state.pokemons.filter(poke => poke.created === true)]
+      }
+    } else {
+      return {
+        ...state,
+        pokemonsFiltered: [{ id: 'noPokemonFound', filter: 'There are no Pokemons created' }]
+      }
     }
   }
   if (action.type === 'SEARCH') {
