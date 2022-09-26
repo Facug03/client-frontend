@@ -26,8 +26,7 @@ export default function Create () {
     defesp: '',
     atesp: '',
     url: '',
-    type: '',
-    form: ''
+    type: ''
   })
 
   const handleInput = e => {
@@ -47,7 +46,8 @@ export default function Create () {
           atesp: Number(form.atesp),
           defesp: Number(form.defesp),
           speed: Number(form.speed),
-          url: form.url
+          url: form.url,
+          created: true
         },
         primary: form.primary,
         secondary: form.secondary
@@ -65,8 +65,7 @@ export default function Create () {
         defesp: validateStats(form.defesp),
         atesp: validateStats(form.atesp),
         url: validateUrl(form.url),
-        type: validateSelect(form.primary, form.secondary),
-        form: validateAll(form)
+        type: validateSelect(form.primary, form.secondary)
       })
     }
   }
@@ -149,7 +148,7 @@ export default function Create () {
             <h3 className={styles.titletype}>Secondary type</h3>
             <select name='secondary' defaultValue='Type' onChange={handleInput} className={styles.types}>
               <option value='Type' disabled>Type</option>
-              <option value='none'>none</option>
+              <option value=''>none</option>
               <option value='normal'>normal</option>
               <option value='fighting'>fighting</option>
               <option value='flying'>flying</option>
@@ -173,7 +172,6 @@ export default function Create () {
             </select>
           </div>
           <p className={styles.select}>{err.type}</p>
-          <p className={styles.select}>{err.form}</p>
         </div>
         <button className={styles.buttoncreate}>Create</button>
       </form>
@@ -199,34 +197,29 @@ const validateSubmit = form => {
   }
 }
 
-const validateAll = form => {
-  const fields = Object.values(form)
-  fields.forEach(field => {
-    if (!field.length) return 'Todos los campos son obligatorios'
-  })
-}
-
 const validateName = name => {
   if (name.length) {
-    if (name.length > 10) return '10 caracteres como maximo'
-    if (!/^[a-z ,.'-]+$/i.test(name)) return 'Ingresa un nombre valido'
+    if (name.length > 10) return 'The name should be between 1-10 characters'
+    if (!/^[a-z ,.'-]+$/i.test(name)) return 'The name can only contain letters'
+  } else {
+    return 'Enter the pokemon name'
   }
 }
 
 const validateStats = stat => {
-  if (stat.length > 3) return 'No puede superar los 3 digitos'
-  if (!/^[0-9]*$/.test(stat)) return 'Solo numeros'
+  if (!stat.length) return 'Enter a number'
+  if (!/^[0-9]*$/.test(stat)) return 'Only numbers'
+  if (stat.length > 3) return 'Max 3 digits'
 }
 
 const validateUrl = url => {
-  if (url.length) {
-    if (!/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w]*))?)/.test(url)) return 'Url invalida'
-  }
+  if (!/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g.test(url)) return 'invalid url image'
 }
 
 const validateSelect = (type, type2) => {
   if (type.length || type2.length) {
-    if (type === type2) return 'No puedes tener 2 tipos iguales'
-    if (!type) return 'Debes seleccionar un tipo'
+    if (type === type2) return "It can't have duplicate types"
+  } else {
+    if (!type) return 'Select a type'
   }
 }
