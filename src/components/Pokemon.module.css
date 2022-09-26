@@ -236,6 +236,12 @@
     text-shadow: 1.5px 2px #635972;
 }
 
+.imgcreated {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
 
 @media (max-width: 540px) {
     .pokemoninfo {
@@ -378,5 +384,8 @@
     }
     .noid {
         left: 34px;
+    }
+    .imgcreated {
+        height: 90px;
     }
 }

@@ -15,7 +15,7 @@ export default function Pokemon ({
   specialDef,
   speed,
   url,
-  idStr
+  created
 }) {
   return (
     <>
@@ -23,10 +23,10 @@ export default function Pokemon ({
         <div className={styles.background}>
           <div className={styles.pokemoninfo}>
             <div className={styles.title}>
-              <h2 className={`${styles.namepokemon} ${idStr && styles.noid}`}>{name}</h2>
-              <h2 className={styles.idpokemon}>{idStr || idPoke}</h2>
+              <h2 className={`${styles.namepokemon} ${created && styles.noid}`}>{name}</h2>
+              <h2 className={styles.idpokemon}>{!created ? idPoke : null}</h2>
               <div className={styles.containerpoke}>
-                <img className={styles.imagepokemon} src={url || img} alt='img-pokemon' />
+                <img className={created ? styles.imgcreated : styles.imagepokemon} src={url || img} alt='img-pokemon' />
               </div>
             </div>
             <div className={styles.stats}>
@@ -38,7 +38,7 @@ export default function Pokemon ({
               </div>
               <div className={styles.ps}>
                 <div className={styles.bar}>
-                  <img className={styles.psima} src={ima} alt='a' />  <div className={styles.green} />
+                  <img className={styles.psima} src={ima} alt='health' />  <div className={styles.green} />
                 </div>
               </div>
               <div className={styles.habilitys}>
