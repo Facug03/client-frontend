@@ -1,13 +1,27 @@
 const initialState = {
   pokemons: [],
-  pokemonsFiltered: []
+  pokemonsFiltered: [],
+  reset: false
 }
 
 export const rootReducer = (state = initialState, action) => {
   if (action.type === 'INITIALIZE') {
+    if (action.payload.pokemonsCreated) {
+      return {
+        ...state,
+        pokemons: [...action.payload.pokemonArr, ...action.payload.pokemonsCreated]
+      }
+    } else {
+      return {
+        ...state,
+        pokemons: [...action.payload]
+      }
+    }
+  }
+  if (action.type === 'RESET') {
     return {
       ...state,
-      pokemons: [...action.payload]
+      reset: action.payload
     }
   }
   if (action.type === 'PRIMARY_TYPE') {
