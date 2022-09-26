@@ -14,11 +14,16 @@ export default function PokeCard ({
   defense,
   specialAt,
   specialDef,
-  speed
+  speed,
+  url
 }) {
   const [modal, setModal] = useState(false)
   const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
   let idPoke = ''
+  let idStr = false
+  if (typeof id === 'string') {
+    idStr = true
+  }
 
   if (id.toString().length === 1) {
     idPoke = `N.º 00${id}`
@@ -48,7 +53,7 @@ export default function PokeCard ({
         <div className={styles.pokecard}>
           <div className={styles.detailright} />
           <div className={styles.detailleft} />
-          <img onClick={() => setModal(true)} className={styles.imagepoke} src={img} alt='pokemon' />
+          <img onClick={() => setModal(true)} className={styles.imagepoke} src={url || img} alt='pokemon' />
         </div>
         <div className={styles.middledetail}>
           <hr />
@@ -56,7 +61,7 @@ export default function PokeCard ({
           <hr />
         </div>
         <div className={styles.data}>
-          <span onClick={() => setModal(true)} className={styles.idpoke}>{idPoke}</span>
+          <span onClick={() => setModal(true)} className={styles.idpoke}>{idStr || idPoke}</span>
           <h3 onClick={() => setModal(true)} className={styles.namepoke}>{name}</h3>
           <span style={{ backgroundColor: typeColor(types[0]), color: typeText(types[0]) }} className={styles.type}>{types[0]}</span>{types[1] && <span style={{ backgroundColor: typeColor(types[1]), color: typeText(types[1]) }} className={styles.type2}>{types[1]}</span>}
         </div>
@@ -75,6 +80,8 @@ export default function PokeCard ({
         specialAt={specialAt}
         specialDef={specialDef}
         speed={speed}
+        url={url}
+        idStr={idStr}
       />
     </>
   )
