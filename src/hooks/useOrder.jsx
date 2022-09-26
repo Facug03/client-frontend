@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { primaryType, orderByStats, deleteFilter } from '../actions'
+import { primaryType, orderByStats, deleteFilter, resetPage } from '../actions'
 
 export const useOrder = () => {
   const [order, setOrder] = useState({ value: false, text: '' })
@@ -8,6 +8,7 @@ export const useOrder = () => {
   const dispatch = useDispatch()
 
   const handleType = (e) => {
+    dispatch(resetPage(true))
     if (type.value && order.value) {
       dispatch(primaryType(e.target.textContent, false))
       setType({ ...type, value: true, text: e.target.textContent })
@@ -23,6 +24,7 @@ export const useOrder = () => {
   }
 
   const handleOrder = (e) => {
+    dispatch(resetPage(true))
     setOrder({ ...order, text: e.target.textContent, value: true })
     const orderBy = orderByStats(e.target.textContent)
     dispatch(orderBy(true))
@@ -30,12 +32,14 @@ export const useOrder = () => {
 
   const handleClose = (filter) => {
     if (filter === 'order') {
+      dispatch(resetPage(true))
       setOrder({ ...order, value: false })
       if (type.value) dispatch(deleteFilter('order', type.text))
       else dispatch(deleteFilter())
     } else if (filter === 'type') {
       setType({ ...type, value: false })
       if (order.value) {
+        dispatch(resetPage(true))
         const orderAll = deleteFilter('type', order.text)
         dispatch(orderAll(false))
       } else dispatch(deleteFilter())
